@@ -1,2 +1,20 @@
-# ML_Boat
-MLBoat es un modelo de clasificación supervisada diseñado como ejercicio práctico de machine learning. Su objetivo es predecir si un pasajero del Titanic habría sobrevivido, utilizando solo tres variables clave: sexo, edad y tarifa pagada
+## 🚤 MLBoat – Titanic Survival Prediction API
+
+**MLBoat** es un proyecto de aprendizaje automático que predice la probabilidad de supervivencia de un pasajero del Titanic a partir de tres variables clave: **sexo**, **edad** y **tarifa pagada**. Utiliza un modelo de clasificación basado en **XGBoost** y expone sus predicciones mediante una API REST construida con **FastAPI**.
+
+Este proyecto está diseñado como un ejercicio práctico para aprender a entrenar modelos de ML, evaluar su rendimiento y desplegarlos como servicios web.
+
+---
+
+
+## 🧠 Variables utilizadas
+
+- `sex` (str): "male" o "female"
+- `age` (float): Edad del pasajero
+- `fare` (float): Tarifa pagada por el billete
+
+---
+
+## 📡 Ejemplo de solicitud
+
+....
