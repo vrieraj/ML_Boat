@@ -39,10 +39,8 @@ def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
                                                         test_size = 0.20,
                                                         random_state=42)
 
-        model = XGBClassifier(n_estimators = 100, max_depth= 4, learning_rate = 0.2)
+        model = joblib.load('../model/modelo_pipeline.joblib')
         model.fit(X_train, y_train)
-
-
  
         model.fit(data.drop(columns=['Survived']), data['Survived'])
         y_pred = model.predict(data)   
