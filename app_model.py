@@ -39,7 +39,7 @@ def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
                                                         test_size = 0.20,
                                                         random_state=42)
 
-        model = joblib.load('../model/modelo_pipeline.joblib')
+        model = joblib.load('src/model/modelo_pipeline.joblib')
         model.fit(X_train, y_train)
  
         model.fit(data.drop(columns=['Survived']), data['Survived'])
