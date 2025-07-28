@@ -1,4 +1,4 @@
-## 🚤 MLBoat – Titanic Survival Prediction API
+## 🚤 ML Boat – Titanic Survival Prediction API
 
 **MLBoat** es un proyecto de aprendizaje automático que predice la probabilidad de supervivencia de un pasajero del Titanic a partir de tres variables clave: **sexo**, **edad** y **tarifa pagada**. Utiliza un modelo de clasificación basado en **XGBoost** y expone sus predicciones mediante una API REST construida con **FastAPI**.
 
