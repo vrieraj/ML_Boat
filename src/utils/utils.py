@@ -6,7 +6,6 @@ def validate_age(age):
     return True, age
 
 def validate_sex(sex):
-    print(sex)
     if str(sex) not in ['male', 'female']:
         return False, "Sexo inválido, debe ser 'male' o 'female'"
     return True, sex
@@ -49,4 +48,4 @@ def predict_survival(model, age, sex, pclass, fare, column_order=None):
         )
     
     X = X_data(age_result, sex_result, pclass_result, fare_result, column_order)
-    return X
+    return X, [age, sex, pclass, fare]

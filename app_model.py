@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from xgboost import XGBClassifier
 
-from src.utils.utils import *
+from src.utils.utils import predict_survival
 
 app = Flask(__name__)
 
@@ -25,16 +25,16 @@ def home():
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
 
-    age = request.args.get('age', None)
-    sex = request.args.get('sex', None)
-    pclass = request.args.get('pclass', None)
-    fare = request.args.get('fare', None)
+    age = request.args.get('age', np.random.randint(0,101))
+    sex = request.args.get('sex', np.random.choice(['male','female']))
+    pclass = request.args.get('pclass', np.random.randint(1,4))
+    fare = request.args.get('fare', np.random.randint(0,1001))
 
     model = joblib.load('src/model/modelo_pipeline.joblib')
-    X = predict_survival(model, int(age), str(sex.strip()), int(pclass), int(fare), column_order=None)
+    X, features = predict_survival(model, int(age), str(sex.strip()), int(pclass), int(fare), column_order=None)
     prediction = model.predict(X)[0]
-    print(prediction)
 
+    print(features)
     if prediction == 0:
         return 'MUERE'
     else:
