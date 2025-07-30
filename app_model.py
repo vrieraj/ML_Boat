@@ -40,23 +40,20 @@ def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
     if os.path.exists('src/data_retrain/titanic_new.csv'):
         data = pd.read_csv('src/data_retrain/titanic_new.csv')
 
-        X_train, X_test, y_train, y_test = train_test_split(data.drop(columns=['Survived']),
-                                                        data['Survived'],
-                                                        test_size = 0.20,
-                                                        random_state=42)
+        set_train, set_test = train_test_split(data,test_size = 0.20,random_state=42)
 
         model = joblib.load('src/model/modelo_pipeline.joblib')
-        model.fit(X_train, y_train)
+        model.fit(set_train, set_train['Survived'])
 
-        y_pred = model.predict(X_test)
+        y_pred = model.predict(set_test.drop(columns=['Survived']))
         
-        report = classification_report(y_test, y_pred)
+        report = classification_report(set_test['Survived'], y_pred)
 
         # Reentrenamos con todos los datos
-        model.fit(data.drop(columns=['Survived']), data['Survived'])
-        joblib.dump(model, 'modelo_pipeline.joblib')
+        model.fit(data, data['Survived'])
+        joblib.dump(model, 'src/model/modelo_retrain.joblib')
             
-        return f"Model retrained. Check new classification report and Confusion Matrix Display:", report 
+        return f"Model retrained. Check new classification report", report 
         
     else:
         return f"<h2>New data for retrain NOT FOUND. Nothing done!</h2>"
