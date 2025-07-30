@@ -19,12 +19,12 @@ Este proyecto está diseñado como un ejercicio práctico para aprender a entren
 
 - **Endpoint** `/api/v1/predict`
 
-'''
-bash
-http://localhost:8000/api/v1/predict?age=29&sex=female&pclass=2&fare=35.5
-'''
+``` bash
 
-....
+http://localhost:8000/api/v1/predict?age=29&sex=female&pclass=2&fare=35.5
+```
+
+---
 
 
 ## 🔁 Retrain del modelo con nuevos datos
@@ -39,9 +39,8 @@ El sistema permite reentrenar el modelo con nuevos datos de entrenamiento propor
 
 - El archivo debe contener las siguientes columnas:
 
-'''
-bash
+``` bash
 PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
-'''
+```
 
-Si el archivo titanic_new.csv existe y es válido, el modelo se reentrena automáticamente y se guarda el nuevo modelo en src/model/modelo_pipeline.joblib.
+Si el archivo `titanic_new.csv` existe y es válido, el modelo se reentrena automáticamente y se guarda el nuevo modelo en src/model/modelo_pipeline.joblib.
