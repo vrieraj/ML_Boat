@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import os
 
 import joblib
@@ -15,6 +15,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
+    # return render_template("index.html")
+
     return '''
     
     ML Boat – Titanic Survival Prediction API
@@ -36,9 +38,9 @@ def predict():
 
     print(features)
     if prediction == 0:
-        return 'MUERE'
+        return f'{features} -> MUERES'
     else:
-        return 'VIVES'
+        return f'{features} -> VIVES'
 
 @app.route('/api/v1/retrain', methods=['GET'])
 def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
