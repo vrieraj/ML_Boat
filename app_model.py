@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, ConfusionMatrixDisplay
+from sklearn.metrics import classification_report
 from xgboost import XGBClassifier
 
 from src.utils.utils import *
@@ -47,14 +47,16 @@ def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
 
         model = joblib.load('src/model/modelo_pipeline.joblib')
         model.fit(X_train, y_train)
- 
-        model.fit(data.drop(columns=['Survived']), data['Survived'])
-        y_pred = model.predict(data.drop(columns=['Survived']))   
 
+        y_pred = model.predict(X_test)
+        
+        report = classification_report(y_test, y_pred)
+
+        # Reentrenamos con todos los datos
+        model.fit(data.drop(columns=['Survived']), data['Survived'])
         joblib.dump(model, 'modelo_pipeline.joblib')
             
-        return f"Model retrained. Check new classification report and Confusion Matrix Display:", 
-        classification_report(data["Survived"], model.predict(data)), ConfusionMatrixDisplay.from_predictions(data["Survived"], y_pred) 
+        return f"Model retrained. Check new classification report and Confusion Matrix Display:", report 
         
     else:
         return f"<h2>New data for retrain NOT FOUND. Nothing done!</h2>"
