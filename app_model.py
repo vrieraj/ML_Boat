@@ -15,7 +15,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return 'ML Boat – Titanic Survival Prediction API'
+    return '''
+    
+    ML Boat – Titanic Survival Prediction API
+    ¿Jack cabía en la tabla?
+
+    '''
 
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
