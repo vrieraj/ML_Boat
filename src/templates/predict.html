@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción del Titanic</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f0f8ff;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Sobrevivirías al Titanic?</h1>
+    <!-- ✅ Ahora sí cargará correctamente -->
+    <img src="/img/titanic.png" alt="Imagen del Titanic">
+
+    <form method="POST">
+        <input type="number" name="age" placeholder="Edad" step="any" required><br>
+
+        <select name="sex" required>
+            <option value="">Sexo</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select><br>
+
+        <input type="number" name="fare" placeholder="Tarifa (€)" step="any" required><br>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            {{ prediction }}
+        </div>
+    {% endif %}
+</body>
+</html>
