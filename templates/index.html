@@ -1,31 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Predicción del Titanic</title>
     <meta charset="UTF-8">
+    <title>API de Predicción del Titanic</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 40px;
-            background-color: #f0f8ff;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        p {
-            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
             color: #333;
+        }
+
+        header {
+            background-color: #003f5c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #0077b6;
+        }
+
+        code {
+            background: #e0f2f1;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.95em;
+        }
+
+        a.button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background-color: #0077b6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #023e8a;
+        }
+
+        img {
+            display: block;
+            margin: 30px auto;
+            width: 50%;
+            max-width: 200px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9em;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <h1>¿Sobrevivirías al Titanic?</h1>
-    <img src="/img/titanic.png" alt="Imagen del Titanic">
-    <p>Esta aplicación predice si habrías sobrevivido en base a tu edad, sexo y tarifa pagada.</p>
-    <p><a href="/predict">👉 Haz clic aquí para intentarlo</a></p>
+
+<header>
+    <h1>ML Boat - Titanic Survival Prediction API</h1>
+    <p>¿Jack cabía en la tabla? Esta vez, tú decides si sobrevives.</p>
+</header>
+
+<div class="container">
+
+    <img src="{{ url_for('static', filename='img/titanic.png') }}" alt="Titanic">
+
+    <div class="section">
+        <h2>¿Qué hace esta API?</h2>
+        <p>Predice si una persona habría sobrevivido al Titanic basándose en:</p>
+        <ul>
+            <li><strong>Edad</strong></li>
+            <li><strong>Sexo</strong></li>
+            <li><strong>Clase de pasaje</strong> (1, 2 o 3)</li>
+            <li><strong>Tarifa pagada</strong></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Endpoint de Predicción</h2>
+        <p><code>GET /api/v1/predict?age=25&sex=male&pclass=1&fare=100</code></p>
+        <p>Devuelve un mensaje indicando si <strong>sobrevives</strong> o <strong>mueres</strong> según los datos.</p>
+        <a class="button" href="/predict">Probar predicción</a>
+    </div>
+
+    <div class="section">
+        <h2>Endpoint de Reentrenamiento</h2>
+        <p><code>GET /api/v1/retrain</code></p>
+        <p>Busca un archivo CSV nuevo (<code>src/data_retrain/titanic_new.csv</code>) y entrena el modelo con esos datos.</p>
+        <p>Devuelve un <strong>informe de clasificación</strong> con los nuevos resultados.</p>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2025 ML Boat - Titanic ML App
+</footer>
+
 </body>
 </html>
+

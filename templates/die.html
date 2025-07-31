@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>No lo lograste</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #003f5c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 30px auto;
+            width: 50%;
+            max-width: 200px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .result-title {
+            font-size: 1.8em;
+            color: #b00020;
+            margin-top: 20px;
+        }
+
+        .home-button {
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 30px auto;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #023e8a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Simulador de Supervivencia del Titanic</h1>
+</header>
+
+<div class="container">
+    <img src="{{ url_for('static', filename='img/mueres.png') }}" alt="No sobreviviste">
+    <div class="result-title">💀 Lo sentimos... no lograste sobrevivir.</div>
+
+    <a class="home-button" href="/">← Volver al Inicio</a>
+</div>
+
+<footer>
+    &copy; 2025 ML Boat - Titanic ML App
+</footer>
+
+</body>
+</html>

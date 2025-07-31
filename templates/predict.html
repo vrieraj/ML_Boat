@@ -1,65 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Predicción del Titanic</title>
     <meta charset="UTF-8">
+    <title>Predicción de Supervivencia</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #003f5c;
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            padding: 40px;
-            background-color: #f0f8ff;
         }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         img {
-            max-width: 100%;
-            height: auto;
+            display: block;
+            margin: 30px auto;
+            width: 50%;
+            max-width: 200px;
             border-radius: 15px;
-            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+
         form {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .buttons {
+            text-align: center;
             margin-top: 20px;
         }
-        input, select {
-            padding: 10px;
+
+        button, .home-button {
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
             margin: 10px;
-            width: 200px;
-            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
+
+        button:hover, .home-button:hover {
+            background-color: #023e8a;
         }
-        .result {
-            margin-top: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #003366;
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9em;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <h1>¿Sobrevivirías al Titanic?</h1>
-    <!-- ✅ Ahora sí cargará correctamente -->
-    <img src="/img/titanic.png" alt="Imagen del Titanic">
 
-    <form method="POST">
-        <input type="number" name="age" placeholder="Edad" step="any" required><br>
+<header>
+    <h1>Simulador de Supervivencia del Titanic</h1>
+</header>
 
-        <select name="sex" required>
-            <option value="">Sexo</option>
-            <option value="male">male</option>
-            <option value="female">female</option>
-        </select><br>
+<div class="container">
+    <img src="{{ url_for('static', filename='img/titanic.png') }}" alt="Titanic">
 
-        <input type="number" name="fare" placeholder="Tarifa (€)" step="any" required><br>
+    <form action="/api/v1/predict" method="get">
+        <label for="age">Edad:</label>
+        <input type="number" id="age" name="age" min="0" max="100" required>
 
-        <button type="submit">Predecir</button>
-    </form>
+        <label for="sex">Sexo:</label>
+        <select id="sex" name="sex" required>
+            <option value="">Seleccione...</option>
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+        </select>
 
-    {% if prediction %}
-        <div class="result">
-            {{ prediction }}
+        <label for="pclass">Categoría del pasaje:</label>
+        <select id="pclass" name="pclass" required>
+            <option value="">Seleccione...</option>
+            <option value="1">Primera Clase</option>
+            <option value="2">Segunda Clase</option>
+            <option value="3">Tercera Clase</option>
+        </select>
+
+        <label for="fare">Tarifa pagada:</label>
+        <input type="number" id="fare" name="fare" min="0" required>
+
+        <div class="buttons">
+            <button type="submit">Predecir Supervivencia</button>
+            <a class="home-button" href="/">← Volver al Inicio</a>
         </div>
-    {% endif %}
+    </form>
+</div>
+
+<footer>
+    &copy; 2025 ML Boat - Titanic ML App
+</footer>
+
 </body>
 </html>
