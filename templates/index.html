@@ -107,14 +107,14 @@
 
     <div class="section">
         <h2>Endpoint de Predicción</h2>
-        <p><code>GET /api/v1/predict?age=25&sex=male&pclass=1&fare=100</code></p>
+        <p><code>GET /predict?age=25&sex=male&pclass=1&fare=100</code></p>
         <p>Devuelve un mensaje indicando si <strong>sobrevives</strong> o <strong>mueres</strong> según los datos.</p>
-        <a class="button" href="/predict">Probar predicción</a>
+        <a class="button" href="/choose">Probar predicción</a>
     </div>
 
     <div class="section">
         <h2>Endpoint de Reentrenamiento</h2>
-        <p><code>GET /api/v1/retrain</code></p>
+        <p><code>GET /retrain</code></p>
         <p>Busca un archivo CSV nuevo (<code>src/data_retrain/titanic_new.csv</code>) y entrena el modelo con esos datos.</p>
         <p>Devuelve un <strong>informe de clasificación</strong> con los nuevos resultados.</p>
     </div>

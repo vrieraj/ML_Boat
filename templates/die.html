@@ -80,6 +80,14 @@
 </header>
 
 <div class="container">
+    <div class="features">
+        <p>
+            Como <strong>{{ sexo }}</strong> de 
+            <strong>{{features['age']}} años</strong> y viajando en 
+            <strong>{{features['pclass']}}ª clase</strong>, 
+            tus <strong>{{features['fare']}} libras</strong> te han servido de poco...</span>
+        </p>
+    </div>
     <img src="{{ url_for('static', filename='img/mueres.png') }}" alt="No sobreviviste">
     <div class="result-title">💀 Lo sentimos... no lograste sobrevivir.</div>
 

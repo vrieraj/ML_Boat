@@ -48,4 +48,4 @@ def predict_survival(model, age, sex, pclass, fare, column_order=None):
         )
     
     X = X_data(age_result, sex_result, pclass_result, fare_result, column_order)
-    return X, [age, sex, pclass, fare]
+    return X, {'age':age, 'sex':sex, 'pclass':pclass, 'fare':fare}

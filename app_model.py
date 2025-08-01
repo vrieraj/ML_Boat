@@ -25,11 +25,13 @@ def home():
 
     # '''
 
-@app.route('/api/v1/predict', methods=['GET'])
+@app.route('/choose')
+def choose():
+    return render_template('predict.html')
+
+@app.route('/predict', methods=['GET'])
 def predict():
-
-    # return render_template('predict.html')
-
+    
     age = request.args.get('age', np.random.randint(0,101))
     sex = request.args.get('sex', np.random.choice(['male','female']))
     pclass = request.args.get('pclass', np.random.randint(1,4))
@@ -40,14 +42,17 @@ def predict():
     prediction = model.predict(X)[0]
 
     print(features)
+
+    sexo = 'hombre' if features['sex'] == 'male' else 'mujer'
+
     if prediction == 0:
-        return render_template('die.html')
+        return render_template('die.html', features=features, sexo=sexo)
         # return f'{features} -> MUERES'
     else:
-        return render_template('survive.html')
+        return render_template('survive.html', features=features, sexo=sexo)
         #return f'{features} -> VIVES'
 
-@app.route('/api/v1/retrain', methods=['GET'])
+@app.route('/retrain', methods=['GET'])
 def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
     if os.path.exists('src/data_retrain/titanic_new.csv'):
         data = pd.read_csv('src/data_retrain/titanic_new.csv')

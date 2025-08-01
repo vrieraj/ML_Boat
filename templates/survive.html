@@ -80,6 +80,15 @@
 </header>
 
 <div class="container">
+    <div class="features">
+        <p>
+            Como <strong>{{ sexo }}</strong> de 
+            <strong>{{features['age']}} años</strong> y viajando en 
+            <strong>{{features['pclass']}}ª clase</strong>, 
+            tus <strong>{{features['fare']}} libras</strong> no te sirvieron de mucho...
+            si no fuera por una puñetera tabla a la deriva.</span>
+        </p>
+    </div>
     <img src="{{ url_for('static', filename='img/vives.png') }}" alt="Sobreviviste">
     <div class="result-title">🎉 ¡Has sobrevivido al Titanic!</div>
 
