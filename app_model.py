@@ -16,7 +16,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def home():
  
-    #return render_template('index.html')
+    return render_template('index.html')
 
     return '''
     
@@ -46,10 +46,10 @@ def predict():
     sexo = 'hombre' if features['sex'] == 'male' else 'mujer'
 
     if prediction == 0:
-        #return render_template('die.html', features=features, sexo=sexo)
+        return render_template('die.html', features=features, sexo=sexo)
         return f'{features} -> MUERES'
     else:
-        #return render_template('survive.html', features=features, sexo=sexo)
+        return render_template('survive.html', features=features, sexo=sexo)
         return f'{features} -> VIVES'
 
 @app.route('/retrain', methods=['GET'])
