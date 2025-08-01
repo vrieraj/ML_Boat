@@ -16,14 +16,14 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def home():
  
-    return render_template('index.html')
+    #return render_template('index.html')
 
-    # return '''
+    return '''
     
-    # ML Boat – Titanic Survival Prediction API
-    # ¿Jack cabía en la tabla?
+    ML Boat – Titanic Survival Prediction API
+    ¿Jack cabía en la tabla?
 
-    # '''
+    '''
 
 @app.route('/choose')
 def choose():
@@ -46,11 +46,11 @@ def predict():
     sexo = 'hombre' if features['sex'] == 'male' else 'mujer'
 
     if prediction == 0:
-        return render_template('die.html', features=features, sexo=sexo)
-        # return f'{features} -> MUERES'
+        #return render_template('die.html', features=features, sexo=sexo)
+        return f'{features} -> MUERES'
     else:
-        return render_template('survive.html', features=features, sexo=sexo)
-        #return f'{features} -> VIVES'
+        #return render_template('survive.html', features=features, sexo=sexo)
+        return f'{features} -> VIVES'
 
 @app.route('/retrain', methods=['GET'])
 def retrain(): # Ligado al endpoint '/api/v1/retrain/', metodo GET
