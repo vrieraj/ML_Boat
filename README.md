@@ -17,11 +17,11 @@ Este proyecto está diseñado como un ejercicio práctico para aprender a entren
 
 ## 📡 Ejemplo de solicitud
 
-- **Endpoint** `/api/v1/predict`
+**Endpoint** `/predict`
 
 ``` bash
 
-http://localhost:8000/api/v1/predict?age=29&sex=female&pclass=2&fare=35.5
+http://localhost:5000/predict?age=29&sex=female&pclass=2&fare=35.5
 ```
 
 ---
@@ -30,6 +30,13 @@ http://localhost:8000/api/v1/predict?age=29&sex=female&pclass=2&fare=35.5
 ## 🔁 Retrain del modelo con nuevos datos
 
 El sistema permite reentrenar el modelo con nuevos datos de entrenamiento proporcionados por el usuario.
+
+**Endpoint** `/retrain`
+
+``` bash
+
+http://localhost:5000/retrain
+```
 
 **Requisitos:**
 
